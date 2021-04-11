@@ -2,7 +2,11 @@ package com.crisdavidpz.training.lambda.basics;
 
 public class LambdaAndFunctionalInterfacesBasics {
     public static void main(String[] args) {
-        Runnable fnLambdaPrintString = () -> System.out.println("Hello lambda!");
+        String name = "Cris";
+        Runnable fnLambdaPrintString = () -> {
+            String lastName = " Parra";
+            System.out.println("Welcome to lambda, " + name + lastName + "!");
+        };
         fnLambdaPrintString.run();
     }
 }
