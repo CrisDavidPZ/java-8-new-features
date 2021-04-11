@@ -1,14 +1,10 @@
 package com.crisdavidpz.training.lambda.basics;
 
+import java.util.function.Consumer;
+
 public class LambdaAndFunctionalInterfacesBasics {
     public static void main(String[] args) {
-        Runnable fn1 = () -> { System.out.println("Hello, !");
-        Executor fn2 = () ->  System.out.println("Hello, !");
-        };
-    }
-
-    @FunctionalInterface
-    public interface Executor {
-        public abstract void execute();
+        Consumer<String> fnGreeting = System.out::println;
+        fnGreeting.accept("Hello Cris from a method reference.");
     }
 }
