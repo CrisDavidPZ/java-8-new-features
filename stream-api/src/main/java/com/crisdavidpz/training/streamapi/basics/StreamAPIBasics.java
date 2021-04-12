@@ -18,7 +18,7 @@ public class StreamAPIBasics {
 
         System.out.println("Top students returned as List: " + topStudents +
                         "\n" + "Here are the top students in a standard io");
-        topStudents.forEach(s -> System.out.println(s));
+        topStudents.forEach(System.out::println);
     }
 
     private static List<StudentExamResult> getStudentResults() {
