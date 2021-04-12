@@ -1,0 +1,8 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Datasource local storage ignored files
+/../../../../../../../../../../../:\BC-VC\VCSOFT-BC-IngSW-Disco-E\BC\IngSW\Training\Java\Java8\java-8-new-features\stream-api\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
