@@ -3,11 +3,22 @@ package com.crisdavidpz.training.streamapi.basics;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class StreamAPIBasics {
     public static void main(String[] args) {
         List<StudentExamResult> results = getStudentResults();
-        System.out.println("This is the list of results by student: " + results);
+
+        List<String> topStudents = results.stream()
+                .filter(studentExamResult -> studentExamResult.roundedPercentage >= 75)
+                .map(StudentExamResult::getName)
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+
+        System.out.println("Top students returned as List: " + topStudents +
+                        "\n" + "Here are the top students in a standard io");
+        topStudents.forEach(s -> System.out.println(s));
     }
 
     private static List<StudentExamResult> getStudentResults() {
@@ -20,13 +31,13 @@ public class StreamAPIBasics {
         results.add(new StudentExamResult(
                 60, "Marisol", oracleCertificationAssociated));
         results.add(new StudentExamResult(
-                95, "Marisol", awsArchitectSolutionsCertified));
+                70, "Marisol", awsArchitectSolutionsCertified));
         results.add(new StudentExamResult(
                 90, "Martina", scalaAdvancedCertification));
         results.add(new StudentExamResult(
-                90, "Cris", awsArchitectSolutionsCertified));
+                85, "Cris", awsArchitectSolutionsCertified));
         results.add(new StudentExamResult(
-                92, "Cris", scalaAdvancedCertification));
+                50, "Cris", scalaAdvancedCertification));
         results.add(new StudentExamResult(
                 97, "Cris", oracleCertificationAssociated));
 
@@ -34,14 +45,18 @@ public class StreamAPIBasics {
     }
 
     static class StudentExamResult {
-        int roundedPercentage;
-        String name;
-        Exam exam;
+        private int roundedPercentage;
+        private String name;
+        private Exam exam;
 
         public StudentExamResult(int roundedPercentage, String name, Exam exam) {
             this.roundedPercentage = roundedPercentage;
             this.name = name;
             this.exam = exam;
+        }
+
+        public String getName() {
+            return name;
         }
 
         @Override
